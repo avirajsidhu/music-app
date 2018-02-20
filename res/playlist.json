@@ -13,7 +13,7 @@ playlist = {
         {
             "id" : 1,
             "trackNo": "2",
-            "name" : "I Took A Pill In Ibizaर",
+            "name" : "I Took A Pill In Ibiza",
             "time": "3:56",
             "url" : "https://drive.google.com/uc?export=download&id=1I0oTUUfezx4_KKZZgZc-BC_lOhTMgHGb",
             "artist" : "Mike Posner",
