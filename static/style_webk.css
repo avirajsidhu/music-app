@@ -10,7 +10,7 @@
 	}
 
 	body {
-		background-color: #2C3E50;
+		background-color: #1C1C1C;
 	}
 
 	#upper {
@@ -107,7 +107,7 @@
 	#title {
 		position: relative;
 		font-size: 40px;
-		font-size: 7vw;
+		font-size: 6vw;
 		color: #CBD0F6;
 		font-family: 'Roboto', sans-serif;
 		margin-top: 1%;
@@ -195,7 +195,7 @@
 	    z-index: 1;
 	    top: 0; 
 	    right: 0;
-	    background-color: #111; 
+	    background-color: #1C1C1C; 
 	    overflow-x: hidden;
 	    padding-top: 60px; 
 	    transition: 0.5s;
