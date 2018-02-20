@@ -54,13 +54,11 @@ var loadTrack = function(art,titleVal,artistVal,endTimeVal) {
 
 	var endTime = document.getElementById("endTime");
 	endTime.innerHTML = endTimeVal;
-
-	var player = document.getElementById("playerTag");
 }
 
 var createList = function(tracks) {
 	var playList = document.getElementById("playList");
-	
+
 	tracks.map(function(item) {
 		var sliderSongDiv = document.createElement("DIV");
 		sliderSongDiv.id = "song" + state.getSongDivId();
@@ -79,6 +77,7 @@ var createList = function(tracks) {
 
 		sliderSongDiv.onclick = function() {
             playAll(item.id);
+            state.setCurrentTrack(item.id);
             playPauseToggle(true);
             loadTrack(playlist.tracks[item.id].albumArt,playlist.tracks[item.id].name,playlist.tracks[item.id].artist,playlist.tracks[item.id].time,playlist.tracks[item.id].url);
             closeNav();
@@ -130,7 +129,6 @@ document.getElementById("pauseControl").onclick = function() {
 
 
 var playAll = function(trackNo) {
-	console.log(trackNo);
     var player = document.getElementById("playerTag");
     player.src = playlist.tracks[trackNo].url;
     player.play();
@@ -140,7 +138,6 @@ var playAll = function(trackNo) {
         if(trackNo++<=playlist.tracks.length-1) {
             playAll(trackNo++);
             loadTrack(playlist.tracks[trackNo++].albumArt,playlist.tracks[trackNo++].name,playlist.tracks[trackNo++].artist,playlist.tracks[trackNo++].time,playlist.tracks[trackNo++].url);
-            console.log("song changed");
         }
         else {
             playPauseToggle(false);
