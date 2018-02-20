@@ -45,6 +45,7 @@ var loadTrack = function(art,titleVal,artistVal,endTimeVal) {
 
 //player methods
 document.getElementById("playControl").onclick = function() {
+	playPauseToggle(true);
 	var player = document.getElementById("playerTag");
 	playAll(state.getCurrentTrack());
 }
@@ -62,13 +63,19 @@ document.getElementById("previousControl").onclick = function() {
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
 }
 
+document.getElementById("pauseControl").onclick = function() {
+    var player = document.getElementById("playerTag");
+    player.pause();
+    playPauseToggle(false);
+};
+
+
+
 var playAll = function(trackNo) {
 	console.log(trackNo);
     var player = document.getElementById("playerTag");
     player.src = playlist.tracks[trackNo].url;
     player.play();
-
-    //toggleCurrentSong("song"+trackNo);
 
     player.addEventListener("ended", function() {
         player.pause();
@@ -77,9 +84,23 @@ var playAll = function(trackNo) {
             console.log("song changed");
         }
         else {
-            //playPauseToggle(false);
+            playPauseToggle(false);
         }
     });
+};
+
+var playPauseToggle = function(toggleBool) {
+    var play = document.getElementById("playControl");
+    var pause = document.getElementById("pauseControl");
+
+    if(toggleBool) {
+        play.style.display = "none";
+        pause.style.display = "block";
+    }
+    else {
+        play.style.display = "block";
+        pause.style.display = "none";
+    }
 };
 
 
