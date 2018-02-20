@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="static/style_moz.css"/>
+	<link rel="stylesheet" type="text/css" href="static/style_webk.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<title>music-player</title>
+</head>
+
+<body>
+	<div id="upper" style="">
+		
+		<div id="albumArt">
+			<img id="imageBox">
+		</div>
+
+		<div id="slide">
+			<img src="static/music.svg" alt="Menu free icon" title="Menu free icon"  id="slideImage" onclick="openNav()">
+		</div>
+
+		
+
+		<div id="repeatButton">
+			<img>
+				<svg class="repeatallsvg" width="100%" height="100%" viewBox="0 0 24 24" version="1.1"> <defs></defs> <g id="Navigation---v2" stroke="#D1EEEE" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="player-states" transform="translate(-1391.000000, -278.000000)" fill="none"> <g id="Now-Playing---Track" transform="translate(0.000000, 199.000000)"> <g id="component/darkui/player-v2-copy-4" transform="translate(0.000000, 54.000000)"> <g id="Player---v2"> <g id="More-Controls" transform="translate(1324.000000, 25.000000)"> <g id="icon/repeat" transform="translate(71.000000, 4.000000)"> <path class="fill_path" d="M0,8.12903226 C0,6.37499974 0.567708267,4.80745961 1.7031248,3.42641135 C2.83854187,2.0453631 4.27083307,1.13306426 6,0.689516387 L6,2.62500026 C4.83333333,3.06854813 3.875,3.78931458 3.125,4.78729858 C2.375,5.78528206 2,6.89919381 2,8.12903226 C2,9.78225806 2.6041664,11.1330643 3.81250027,12.1814514 L6,10.0645161 L6,15.8709677 L0,15.8709677 L2.40625013,13.5423386 C0.8020832,12.1108872 0,10.3064516 0,8.12903226 L0,8.12903226 Z M16,0.387096774 L13.5937499,2.80645161 C15.1979168,4.25806452 16,6.06250013 16,8.21975794 C16,9.99395148 15.4322917,11.5715726 14.2968752,12.9526209 C13.1614581,14.3336692 11.7291669,15.2459675 10,15.6895164 L10,13.6330643 C11.1666667,13.1895164 12.125,12.4687499 12.875,11.4707659 C13.625,10.4727825 14,9.35887071 14,8.12903226 C14,6.47580645 13.3958336,5.12500026 12.1874997,4.07661316 L10,6.19354839 L10,0.387096774 L16,0.387096774 Z" id="Shape"></path> </g> </g> </g> </g> </g> </g> </g> </svg>
+			</img>
+		</div>
+
+		<div id="shuffleButton">
+			<img>
+				<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1"> <defs></defs> <g id="Navigation---v2" stroke="#D1EEEE" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="player-states" transform="translate(-1355.000000, -278.000000)" fill="none"> <g id="Now-Playing---Track" transform="translate(0.000000, 199.000000)"> <g id="component/darkui/player-v2-copy-4" transform="translate(0.000000, 54.000000)"> <g id="Player---v2"> <g id="More-Controls" transform="translate(1324.000000, 25.000000)"> <g id="icon/shuffle" transform="translate(31.000000, 0.000000)"> <path class="fill_path" d="M10.5937499,9.40725781 L9.18749973,10.768145 L4,5.747984 L5.40625013,4.38709677 L10.5937499,9.40725781 Z M14.5,4.38709677 L20,4.38709677 L20,9.70967742 L18,7.77419355 L5.40625013,19.8709677 L4,18.5100805 L16.5,6.32258065 L14.5,4.38709677 Z M14.8125003,13.4899195 L18,16.3931453 L20,14.4576614 L20,19.7802421 L14.5,19.7802421 L16.5,17.8447582 L13.4062501,14.8508067 L14.8125003,13.4899195 Z" id="Shape"></path> </g> </g> </g> </g> </g> </g> </g> </svg>
+			</img>
+		</div>
+
+
+
+	</div>
+
+	<div id="lower">
+			<div id="playControl">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve" width="100%" height="100%" class=""><g><g>
+					<path d="M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30   c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15   C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z" data-original="#000000" class="active-path" data-old_color="#00FF05" fill="#CBD0F6"/>
+					<path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30   S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z" data-original="#000000" class="active-path" data-old_color="#00FF05" fill="#CBD0F6"/>
+			</div>
+			<div id="previousControl" class="previousControl">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 57 57" style="enable-background:new 0 0 57 57;" xml:space="preserve" width="100%" height="100%"><g><path d="M56.461,8.625c-0.333-0.172-0.73-0.145-1.036,0.069L29,27.277V9.5c0-0.373-0.208-0.716-0.539-0.888  c-0.333-0.172-0.731-0.146-1.036,0.07l-27,19C0.158,27.869,0,28.175,0,28.5s0.158,0.631,0.425,0.817l27,19  C27.597,48.439,27.798,48.5,28,48.5c0.157,0,0.315-0.037,0.461-0.112C28.792,48.216,29,47.873,29,47.5V29.723l26.425,18.583  c0.172,0.12,0.373,0.182,0.575,0.182c0.157,0,0.315-0.037,0.461-0.112C56.792,48.203,57,47.86,57,47.487V9.513  C57,9.14,56.792,8.797,56.461,8.625z M27,45.573L2.737,28.5L27,11.427V45.573z M55,45.562L30.738,28.5L55,11.439V45.562z" data-original="#CBD0F6" fill="#CBD0F6"/></g> </svg>
+			</div>
+			<div id="nextControl" class="nextControl">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 57 57" style="enable-background:new 0 0 57 57;" xml:space="preserve" width="100%" height="100%" class=""><g><path d="M56.575,27.683l-27-19c-0.306-0.216-0.703-0.242-1.036-0.07C28.208,8.784,28,9.127,28,9.5v17.777L1.575,8.694  C1.27,8.481,0.872,8.453,0.539,8.625C0.208,8.797,0,9.14,0,9.513v37.975c0,0.373,0.208,0.716,0.539,0.888  C0.685,48.45,0.843,48.487,1,48.487c0.202,0,0.403-0.062,0.575-0.182L28,29.723V47.5c0,0.373,0.208,0.716,0.539,0.888  C28.685,48.463,28.843,48.5,29,48.5c0.202,0,0.404-0.062,0.575-0.183l27-19C56.842,29.131,57,28.825,57,28.5  S56.842,27.869,56.575,27.683z M2,45.562V11.439L26.262,28.5L2,45.562z M30,45.573V11.427L54.263,28.5L30,45.573z" data-original="#CBD0F6" class="active-path" fill="#CBD0F6"/></g> </svg>
+			</div>
+		<div id="intel" style="width: 100%;height:26%">	
+			<div style="text-align:center;width: 100%" class="title" id="title">
+				<span >Name of Song</span><br>
+			</div>
+			<div style="text-align:center;width: 100%" id="artist">
+				<span>Artist</span>
+			</div>
+			<div  style="width: 100%;">
+				<input id="seekBar" type="range">
+			</div>
+			<div style="width: 100%">
+				<time id="startTime" class="startTime">00:00</time>
+				<time id="endTime" class="endTime">00:00</time>
+			</div>
+		</div>	
+		<div>
+			<audio id="playerTag" style="display:none"></audio>
+		</div>
+	</div>
+	<div id="playList">
+		<a class="closebtn" onclick="closeNav()">&times;</a>
+		<img class="albumArtSlide"></img>
+		<span class="titleSlide">Title</span>
+		<time class="duration">4:20</time>
+	</div>
+</body> 
+<script type="text/javascript" src="static/playlist.json"></script>
+<script type="text/javascript" src="static/script.js"></script>
+</html>
+
+

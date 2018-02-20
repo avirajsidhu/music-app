@@ -1,0 +1,221 @@
+@media only screen and (max-width: 812px){
+	html,body {
+		margin: 0;
+		max-width: 100%;
+		overflow-y: hidden;
+		overflow-x: hidden;
+		position: relative;
+		padding: 0;
+		height: 100%;
+	}
+
+	body {
+		background-color: #2C3E50;
+	}
+
+	#upper {
+		position: relative;
+		height: 60%;
+		background-color: black;
+	}
+
+	#albumArt {
+		position: absolute;
+		width: 100%;
+		height: 60%;
+		margin-top: 0vw;
+		color: white;
+	}
+
+	#slide {
+		position: absolute;
+		width: 100%;
+		margin-top: 0vw;
+		color: white;
+	}
+
+	#slideImage {
+		position: absolute;
+		width: 7%;
+	    right: 0;
+	    margin-right: 2%;
+	    margin-top: 1.7%;
+	}
+
+	#repeatButton {
+		position: absolute;
+		bottom: 2%;
+	    width: 8%;
+	    margin-left: 3%;
+	}
+
+	#shuffleButton {
+		position: absolute;
+		bottom: 2%;
+		right: 0;
+    	width: 8%;
+    	margin-right: 3%;
+	}
+
+	#lower {
+		position: relative;
+		height: 40%;
+		margin-top: 0%;
+	}
+
+	#previousControl {
+		position: absolute;
+		width: 13vw;
+		left:0;
+		margin-top: 6%;
+		margin-left: 17%;
+
+	}
+
+	#nextControl {
+		position: absolute;
+		width: 13vw;
+		right:0;
+		margin-top: 6%;
+		margin-right: 17%;
+	}
+
+	#playControl {
+		position: absolute;
+		width: 20vw;
+		right: 0;
+		margin-right: 40%;
+		margin-top: 2%;
+	}
+
+	#intel {
+		position: absolute;
+		background-color: #25476a;
+		margin-top: 25%;
+
+	}
+
+	#title {
+		position: relative;
+		font-size: 40px;
+		font-size: 7vw;
+		color: #CBD0F6;
+		font-family: 'Roboto', sans-serif;
+		margin-top: 1%;
+	}
+
+	#artist {
+		position: relative;
+		font-size: 19px;
+		font-size: 5vw;
+		color: #f6dfcb;
+		margin-top: 0%;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	#seekBar {
+		position: absolute;
+		bottom: 0;
+		margin-left: 2%;
+		margin-bottom: -7vw;
+
+	}
+
+	input[type=range] {
+	    /*removes default webkit styles*/
+	    -webkit-appearance: none;
+	    
+	    /*fix for FF unable to apply focus style bug */
+	    border: 1px solid white;
+	    
+	    /*required for proper track sizing in FF*/
+	    width: 95%;
+	}
+
+	input[type=range]::-webkit-slider-runnable-track {
+	    width: 300px;
+	    height: 5px;
+	    background: #2C3E50;
+	    border: none;
+	    border-radius: 50px;
+	}
+
+	input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    border: none;
+	    height: 16px;
+	    width: 16px;
+	    border-radius: 50%;
+	    background: #f6dfcb;
+	    margin-top: -4px;
+	}
+
+	input[type=range]:focus {
+	    outline: none;
+	}
+
+	input[type=range]:focus::-webkit-slider-runnable-track {
+	    background: #ccc;
+	}
+
+	
+	#startTime {
+		position: absolute;
+		left:0;
+		bottom: 0;
+		margin-bottom: -13vw;
+		margin-left: 2%;
+		color: #CBD0F6;
+		font-size: 4vw;
+	}
+
+	#endTime {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin-bottom: -13vw;
+		margin-right: 2%;
+		color:#CBD0F6;
+		font-size: 4vw;
+	}
+
+	#playList {
+		height: 100%;
+	    width: 0; 
+	    position: fixed;
+	    z-index: 1;
+	    top: 0; 
+	    right: 0;
+	    background-color: #111; 
+	    overflow-x: hidden;
+	    padding-top: 60px; 
+	    transition: 0.5s;
+	    color:white;
+	}
+
+	#playList a {
+	    padding: 8px 8px 8px 32px;
+	    text-decoration: none;
+	    font-size: 25px;
+	    color: seagreen;
+	    display: block;
+	    transition: 0.3s;
+	}
+
+	#playList a:hover {
+    	color: #f1f1f1;
+	}
+
+	#playList .closebtn {
+	    position: absolute;
+	    top: 0;
+	    right: 25px;
+	    font-size: 36px;
+	    margin-left: 50px;
+	}
+
+	#imageBox{
+		width: 100%;
+		height: 167%
+	}
+}
