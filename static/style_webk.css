@@ -88,6 +88,15 @@
 		margin-top: 2%;
 	}
 
+	#pauseControl {
+		position: absolute;
+		width: 20vw;
+		right: 0;
+		margin-right: 40%;
+		margin-top: 2%;
+		display: none;
+	}
+
 	#intel {
 		position: absolute;
 		background-color: #25476a;
