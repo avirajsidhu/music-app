@@ -8,7 +8,8 @@ var state = ( function() {
 	var currentTrack = 0,
 		songCount    = 0;
 
-	var playing = false;
+	var playing     = false,
+		isFirstPlay = false;
 
 	return {
 		nextTrack: function() {
@@ -37,6 +38,15 @@ var state = ( function() {
         getSongDivId : function() {
             return songCount++;
         },
+        setIsFirstPlaying: function() {
+			return isFirstPlay = true;
+		},
+		resetIsFirstPlaying: function() {
+			return isFirstPlay = false;
+		},
+		isFirstPlaying : function() {
+            return isFirstPlay;
+        },
 	}
 
 })();
@@ -56,6 +66,8 @@ var loadTrack = function(art,titleVal,artistVal,endTimeVal, url) {
 
 	var endTime = document.getElementById("endTime");
 	endTime.innerHTML = endTimeVal;
+
+	state.resetIsFirstPlaying();
 }
 
 var createList = function(tracks) {
@@ -78,6 +90,7 @@ var createList = function(tracks) {
 		sliderTime.innerHTML = item.time;
 
 		sliderSongDiv.onclick = function() {
+			state.resetIsFirstPlaying();
             playAll(item.id);
             state.setCurrentTrack(item.id);
             playPauseToggle(true);
@@ -98,7 +111,11 @@ var createList = function(tracks) {
 document.getElementById("playControl").onclick = function() {
 	initSeekBar();
 	playPauseToggle(true);
+
+	state.resetIsFirstPlaying();
+
 	var player = document.getElementById("playerTag");
+
 	if(state.isPlaying) {
 		player.play();
 	}
@@ -113,6 +130,8 @@ document.getElementById("nextControl").onclick = function() {
 	var trackNo = state.nextTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
 
+	state.resetIsFirstPlaying();
+
 	playAll(state.getCurrentTrack());
 }
 
@@ -121,6 +140,8 @@ document.getElementById("previousControl").onclick = function() {
 	
 	var trackNo = state.previousTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
+
+	state.resetIsFirstPlaying();
 
 	playAll(state.getCurrentTrack());
 }
@@ -135,6 +156,7 @@ document.getElementById("pauseControl").onclick = function() {
 
 
 var playAll = function(trackNo) {
+	state.setIsFirstPlaying();
     var player = document.getElementById("playerTag");
     player.src = playlist.tracks[trackNo].url;
     player.play();
@@ -143,6 +165,7 @@ var playAll = function(trackNo) {
 
     player.addEventListener("ended", function() {
         player.pause();
+        state.resetIsFirstPlaying();
 	    document.getElementById("nextControl").click();
     });
 };
@@ -193,13 +216,20 @@ function initSeekBar() {
 		document.getElementById("startTime").innerHTML = currentTime;
 		var seekBar = document.getElementById('seekBar');
 		seekBar.value = (player.currentTime / player.duration)*100;
-		seekBar.style.background = "linear-gradient(to right,#9c9e9f 0%,#9c9e9f "+seekBar.value+"%,#383838 "+(seekBar.value-100)+"%,#383838 100%";
+
+		var progressBar = document.getElementById("progressBar");
+
+		if(seekBar.value==50 && state.isFirstPlaying()) {
+			progressBar.style.width = "0%";	
+		}
+		else {
+			progressBar.style.width = seekBar.value+"%";	
+		}
 	}
 
   // calculate current value time
   
   	seekBar.addEventListener("click", seek);
-  	console.log(seekBar.value);
 
 	function seek(event) {
 	    var percent = event.offsetX / this.offsetWidth;

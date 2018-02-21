@@ -130,38 +130,53 @@
 
 	}
 
-	input[type=range] {
+	#progressBar {
+		position: absolute;
+		bottom: 0;
+		margin-left: 2%;
+		margin-bottom: -7vw;
+
+	}
+
+	input[type=range],progress {
 	    /*removes default webkit styles*/
 	    -webkit-appearance: none;
-	    
-	    /*fix for FF unable to apply focus style bug */
-	    border: 1px solid #1C1C1C;
-	    
-	    /*required for proper track sizing in FF*/
+	    border: none;
+	    outline: none;
 	    width: 95%;
 	}
 
-	input[type=range]::-webkit-slider-runnable-track {
-	    width: 300px;
-	    height: 3px;
-	    /*background: #383838;*/
-	    background: linear-gradient(to right,  #9c9e9f 0%,#9c9e9f 0%,#383838 0%,#383838 100%);
-	    border: none;
-	    border-radius: 0px;
+	progress[value] {
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		appearance:none;
+
+		border: none;
+		height:3px;
 	}
 
-	input[type=range]::-webkit-slider-thumb {
-	    -webkit-appearance: none;
-	    border: none;
-	    height: 11px;
-	    width: 11px;
-	    border-radius: 50%;
-	    background: #f6dfcb;
-	    margin-top: -4px;
+	progress[value]::-webkit-progress-value {
+		background-color: white;
+	}
+
+	progress[value]::-moz-progress-value {
+		background-color: white;
+
+	}
+
+	input[type=range]::-webkit-slider-runnable-track {
+		appearance:none !important;
+		outline: none !important;
+	    width: 300px;
+	    height: 3px;
+	    border-radius: 0px;
+	    z-index: 1;
+	    opacity: -1;
 	}
 
 	input[type=range]:focus {
 	    outline: none;
+	    border: none;
 	}
 
 	input[type=range]:focus::-webkit-slider-runnable-track {
