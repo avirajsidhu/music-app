@@ -100,7 +100,7 @@
 	#intel {
 		position: absolute;
 		background-color: #25476a;
-		margin-top: 25%;
+		margin-top: 27%;
 
 	}
 
@@ -135,7 +135,7 @@
 	    -webkit-appearance: none;
 	    
 	    /*fix for FF unable to apply focus style bug */
-	    border: 1px solid white;
+	    border: 1px solid #1C1C1C;
 	    
 	    /*required for proper track sizing in FF*/
 	    width: 95%;
@@ -143,17 +143,18 @@
 
 	input[type=range]::-webkit-slider-runnable-track {
 	    width: 300px;
-	    height: 5px;
-	    background: #2C3E50;
+	    height: 3px;
+	    /*background: #383838;*/
+	    background: linear-gradient(to right,  #9c9e9f 0%,#9c9e9f 0%,#383838 0%,#383838 100%);
 	    border: none;
-	    border-radius: 50px;
+	    border-radius: 0px;
 	}
 
 	input[type=range]::-webkit-slider-thumb {
 	    -webkit-appearance: none;
 	    border: none;
-	    height: 16px;
-	    width: 16px;
+	    height: 11px;
+	    width: 11px;
 	    border-radius: 50%;
 	    background: #f6dfcb;
 	    margin-top: -4px;
@@ -164,7 +165,7 @@
 	}
 
 	input[type=range]:focus::-webkit-slider-runnable-track {
-	    background: #ccc;
+	    background: #383838;
 	}
 
 	
@@ -211,16 +212,13 @@
 	    transition: 0.3s;
 	}
 
-	#playList a:hover {
-    	color: #f1f1f1;
-	}
-
 	#playList .closebtn {
-	    position: absolute;
+	    position: fixed;
 	    top: 0;
 	    right: 25px;
 	    font-size: 36px;
 	    margin-left: 50px;
+	    position: absolute;
 	}
 
 	#imageBox{

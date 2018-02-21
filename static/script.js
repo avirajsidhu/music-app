@@ -1,4 +1,3 @@
--
 document.addEventListener('DOMContentLoaded',function() {
 	state.resetIsPlaying();
 	loadTrack(playlist.tracks[0].albumArt,playlist.tracks[0].name,playlist.tracks[0].artist,playlist.tracks[0].time,playlist.tracks[0].url);
@@ -9,7 +8,7 @@ var state = ( function() {
 	var currentTrack = 0,
 		songCount    = 0;
 
-	var playing;
+	var playing = false;
 
 	return {
 		nextTrack: function() {
@@ -42,7 +41,7 @@ var state = ( function() {
 
 })();
 
-var loadTrack = function(art,titleVal,artistVal,endTimeVal) {
+var loadTrack = function(art,titleVal,artistVal,endTimeVal, url) {
 	var imageBox = document.getElementById("imageBox");
 	imageBox.src = art;
 
@@ -51,6 +50,9 @@ var loadTrack = function(art,titleVal,artistVal,endTimeVal) {
 
 	var artist = document.getElementById("artist");
 	artist.innerHTML = artistVal;
+
+	var player = document.getElementById("playerTag");
+	player.src = url;
 
 	var endTime = document.getElementById("endTime");
 	endTime.innerHTML = endTimeVal;
@@ -94,6 +96,7 @@ var createList = function(tracks) {
 
 //player methods
 document.getElementById("playControl").onclick = function() {
+	initSeekBar();
 	playPauseToggle(true);
 	var player = document.getElementById("playerTag");
 	if(state.isPlaying) {
@@ -106,17 +109,20 @@ document.getElementById("playControl").onclick = function() {
 
 document.getElementById("nextControl").onclick = function() {
 	playPauseToggle(true);
-	playAll(state.nextTrack());
-
-	var trackNo = state.getCurrentTrack();
+	
+	var trackNo = state.nextTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
+
+	playAll(state.getCurrentTrack());
 }
 
 document.getElementById("previousControl").onclick = function() {
 	playPauseToggle(true);
-	playAll(state.previousTrack());
-	var trackNo = state.getCurrentTrack();
+	
+	var trackNo = state.previousTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
+
+	playAll(state.getCurrentTrack());
 }
 
 document.getElementById("pauseControl").onclick = function() {
@@ -133,15 +139,11 @@ var playAll = function(trackNo) {
     player.src = playlist.tracks[trackNo].url;
     player.play();
 
+    initSeekBar();
+
     player.addEventListener("ended", function() {
         player.pause();
-        if(trackNo++<=playlist.tracks.length-1) {
-            playAll(trackNo++);
-            loadTrack(playlist.tracks[trackNo++].albumArt,playlist.tracks[trackNo++].name,playlist.tracks[trackNo++].artist,playlist.tracks[trackNo++].time,playlist.tracks[trackNo++].url);
-        }
-        else {
-            playPauseToggle(false);
-        }
+	    document.getElementById("nextControl").click();
     });
 };
 
@@ -157,6 +159,53 @@ var playPauseToggle = function(toggleBool) {
         play.style.display = "block";
         pause.style.display = "none";
     }
+};
+
+function calculateTotalValue(length) {
+  	var minutes = Math.floor(length / 60),
+    seconds_int = (length - minutes * 60).toFixed(),
+    seconds_str = seconds_int.toString(),
+    seconds = seconds_str.substr(0, 2),
+    time = minutes + ':' + seconds
+
+  	return time;
+}
+
+function calculateCurrentValue(currentTime) {
+	
+	var current_hour = parseInt(currentTime / 3600) % 24,
+    current_minute = parseInt(currentTime / 60) % 60,
+    current_seconds_long = currentTime % 60,
+    current_seconds = current_seconds_long.toFixed(),
+    current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+	return current_time;
+}
+
+function initSeekBar() {
+	var player = document.getElementById('playerTag');
+	var length = player.duration;
+	var current_time = player.currentTime;
+
+	document.getElementById("playerTag").ontimeupdate = function() {
+		current_time = player.currentTime;
+		var currentTime = calculateCurrentValue(current_time);
+		document.getElementById("startTime").innerHTML = currentTime;
+		var seekBar = document.getElementById('seekBar');
+		seekBar.value = (player.currentTime / player.duration)*100;
+		seekBar.style.background = "linear-gradient(to right,#9c9e9f 0%,#9c9e9f "+seekBar.value+"%,#383838 "+(seekBar.value-100)+"%,#383838 100%";
+	}
+
+  // calculate current value time
+  
+  	seekBar.addEventListener("click", seek);
+  	console.log(seekBar.value);
+
+	function seek(event) {
+	    var percent = event.offsetX / this.offsetWidth;
+	    player.currentTime = percent * player.duration;
+	    seekBar.value = percent / 100;
+  	}
 };
 
 
