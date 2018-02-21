@@ -98,8 +98,9 @@ var createList = function(tracks) {
 document.getElementById("playControl").onclick = function() {
 	initSeekBar();
 	playPauseToggle(true);
-	var player = document.getElementById("playerTag");
+	
 	if(state.isPlaying) {
+		var player = document.getElementById("playerTag");
 		player.play();
 	}
 	else {
@@ -144,6 +145,7 @@ var playAll = function(trackNo) {
     player.addEventListener("ended", function() {
         player.pause();
 	    document.getElementById("nextControl").click();
+	    state.currentTrack(++trackNo);
     });
 };
 
@@ -199,7 +201,6 @@ function initSeekBar() {
   // calculate current value time
   
   	seekBar.addEventListener("click", seek);
-  	console.log(seekBar.value);
 
 	function seek(event) {
 	    var percent = event.offsetX / this.offsetWidth;
