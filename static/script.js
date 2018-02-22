@@ -117,6 +117,7 @@ document.getElementById("playControl").onclick = function() {
 	var player = document.getElementById("playerTag");
 
 	if(state.isPlaying) {
+		var player = document.getElementById("playerTag");
 		player.play();
 	}
 	else {
@@ -167,6 +168,7 @@ var playAll = function(trackNo) {
         player.pause();
         state.resetIsFirstPlaying();
 	    document.getElementById("nextControl").click();
+	    state.currentTrack(++trackNo);
     });
 };
 
@@ -240,7 +242,7 @@ function initSeekBar() {
 
 
 function openNav() {
-    document.getElementById("playList").style.width = "80%";
+    document.getElementById("playList").style.width = "60%";
 }
 
 function closeNav() {
