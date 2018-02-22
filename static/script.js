@@ -90,11 +90,10 @@ var createList = function(tracks) {
 		sliderTime.innerHTML = item.time;
 
 		sliderSongDiv.onclick = function() {
-			state.resetIsFirstPlaying();
+			loadTrack(playlist.tracks[item.id].albumArt,playlist.tracks[item.id].name,playlist.tracks[item.id].artist,playlist.tracks[item.id].time,playlist.tracks[item.id].url);
             playAll(item.id);
             state.setCurrentTrack(item.id);
             playPauseToggle(true);
-            loadTrack(playlist.tracks[item.id].albumArt,playlist.tracks[item.id].name,playlist.tracks[item.id].artist,playlist.tracks[item.id].time,playlist.tracks[item.id].url);
             closeNav();
         }
 
@@ -131,8 +130,6 @@ document.getElementById("nextControl").onclick = function() {
 	var trackNo = state.nextTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
 
-	state.resetIsFirstPlaying();
-
 	playAll(state.getCurrentTrack());
 }
 
@@ -141,8 +138,6 @@ document.getElementById("previousControl").onclick = function() {
 	
 	var trackNo = state.previousTrack();
 	loadTrack(playlist.tracks[trackNo].albumArt,playlist.tracks[trackNo].name,playlist.tracks[trackNo].artist,playlist.tracks[trackNo].time,playlist.tracks[trackNo].url);
-
-	state.resetIsFirstPlaying();
 
 	playAll(state.getCurrentTrack());
 }
@@ -221,8 +216,9 @@ function initSeekBar() {
 
 		var progressBar = document.getElementById("progressBar");
 
-		if(seekBar.value==50 && state.isFirstPlaying()) {
+		if(state.isFirstPlaying()) {
 			progressBar.style.width = "0%";	
+			state.resetIsFirstPlaying();
 		}
 		else {
 			progressBar.style.width = seekBar.value+"%";	
