@@ -161,10 +161,7 @@
 		background-color: white;
 	}
 
-	progress[value]::-moz-progress-value {
-		background-color: white;
-
-	}
+	
 
 	input[type=range]::-webkit-slider-runnable-track {
 		appearance:none !important;
@@ -185,6 +182,7 @@
 	    background: #383838;
 	}
 
+	
 	
 	#startTime {
 		position: absolute;

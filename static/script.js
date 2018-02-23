@@ -115,7 +115,7 @@ document.getElementById("playControl").onclick = function() {
 
 	var player = document.getElementById("playerTag");
 
-	if(state.isPlaying) {
+	if(state.isPlaying()) {
 		var player = document.getElementById("playerTag");
 		player.play();
 	}
@@ -163,7 +163,7 @@ var playAll = function(trackNo) {
         player.pause();
         state.resetIsFirstPlaying();
 	    document.getElementById("nextControl").click();
-	    state.currentTrack(++trackNo);
+	    state.setCurrentTrack(++trackNo);
     });
 };
 
@@ -221,8 +221,7 @@ function initSeekBar() {
 			state.resetIsFirstPlaying();
 		}
 		else {
-			progressBar.style.width = seekBar.value+"%";	
-		}
+			progressBar.style.width = (seekBar.value/1.05)+"%";			}
 	}
 
   // calculate current value time
