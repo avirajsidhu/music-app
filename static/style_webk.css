@@ -13,6 +13,10 @@
 		background-color: #1C1C1C;
 	}
 
+	#desktop {
+		display: none;
+	}
+
 	#upper {
 		position: relative;
 		height: 60%;
@@ -161,7 +165,7 @@
 		background-color: white;
 	}
 
-	
+
 
 	input[type=range]::-webkit-slider-runnable-track {
 		appearance:none !important;
@@ -182,8 +186,8 @@
 	    background: #383838;
 	}
 
-	
-	
+
+
 	#startTime {
 		position: absolute;
 		left:0;
@@ -206,14 +210,14 @@
 
 	#playList {
 		height: 100%;
-	    width: 0; 
+	    width: 0;
 	    position: fixed;
 	    z-index: 1;
-	    top: 0; 
+	    top: 0;
 	    right: 0;
-	    background-color: #1C1C1C; 
+	    background-color: #1C1C1C;
 	    overflow-x: hidden;
-	    padding-top: 60px; 
+	    padding-top: 60px;
 	    transition: 0.5s;
 	    color:white;
 	}
@@ -252,6 +256,23 @@
 
 	.duration {
 	    display: none;
+	}
+
+}
+
+@media only screen and (max-width: 1200px){
+	#desktop {
+		display: block;
+		background-color: black;
+		color: white;
+	}
+
+	#upper {
+		display: none;
+	}
+
+	#lowe {
+		display: none;
 	}
 
 }
