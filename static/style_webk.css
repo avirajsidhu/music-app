@@ -259,20 +259,3 @@
 	}
 
 }
-
-@media only screen and (max-width: 1200px){
-	#desktop {
-		display: block;
-		background-color: black;
-		color: white;
-	}
-
-	#upper {
-		display: none;
-	}
-
-	#lowe {
-		display: none;
-	}
-
-}
